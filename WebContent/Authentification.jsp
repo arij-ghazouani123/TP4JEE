@@ -15,6 +15,7 @@ div {
 <title>Authentification</title>
 </head>
 <body bgcolor="#COCOCO">
+<form action="Authentification.html"  method="post">
 <center>
 <h1><p style="color:green";>Bienvenue à Votre Session <br></h1>
 <% if(request.getParameter("nom").equals("") || request.getParameter("prenom").equals("") ) %>
@@ -23,9 +24,10 @@ div {
 <jsp:setProperty property="prenom" name="personne" />
 <hr>
 <div>
-<br><h2>Prénom : <%=personne.getPrenom() %></h2>
 <br><h2>Nom : <%=personne.getNom()%></h2>
+<br><h2>Prénom : <%=personne.getPrenom() %></h2>
 </div>
+<input type="submit" value="Retour">
 </center>
 </body>
 </html>

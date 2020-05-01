@@ -1,46 +1,50 @@
 package servlets;
 
 import java.io.IOException;
-
-import java.util.Random;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.corba.se.impl.protocol.RequestDispatcherRegistryImpl;
-
-import beans.NombreAleatoire;
-
 /**
- * Servlet implementation class NbAleatoire
+ * Servlet implementation class ClientServlet
  */
-@WebServlet("/NbAleatoire")
-public class NbAleatoire extends HttpServlet {
+@WebServlet("/ClientServlet")
+public class ClientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NbAleatoire() {
+    public ClientServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		NombreAleatoire r = new NombreAleatoire();
-		request.setAttribute("randomNum", r.Frandom(Double.parseDouble(request.getParameter("nbal"))));
+		// TODO Auto-generated method stub
+		String nom = request.getParameter("nomClient");
+		String prenom = request.getParameter("prenomClient");
+		String adresse = request.getParameter("adresseClient");
+		String telephone = request.getParameter("telephoneClient");
+		String email = request.getParameter("emailClient");
 		
+		beans.Client client = new beans.Client();
+		client.setNom(nom);
+		client.setPrenom(prenom);
+		client.setAdresse(adresse);
+		client.setTelephone(telephone);
+		client.setEmail(email);
 		
-	  RequestDispatcher dsip = request.getRequestDispatcher("NombreAleatoire.jsp");
-	  dsip.forward(request, response);
-	  
+		request.setAttribute("client", client);
+		
+		this.getServletContext().getRequestDispatcher("/afficherClient-EX3.jsp").forward(request, response);
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

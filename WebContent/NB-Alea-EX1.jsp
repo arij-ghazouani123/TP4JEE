@@ -4,14 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Nombre Aléatoire</title>
+<title>Random Number</title>
 </head>
-<body bgcolor="#008000">
+<body bgcolor="green">
+<form action="NB-Alea-EX1.html"  method="post">
 <center>
-<h1>Résultat</h1>
+<h1>***Résultat***</h1>
 <hr>
-<jsp:useBean id="BeanNumber" class="beans.NombreAleatoire" scope="session"></jsp:useBean>
-<h2>Random Number : <%= request.getAttribute("randomNum") %></h2>
+<h3>Le Nombre Aléatoire est <%=request.getAttribute("randomNum")%></h3>
+<input type="submit" value="Retour">
 </center>
 </body>
 </html>
