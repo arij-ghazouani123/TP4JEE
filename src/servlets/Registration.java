@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.PerAuth;
+import beans.NameBean;
 
 /**
- * Servlet implementation class Auth
+ * Servlet implementation class Registration
  */
-@WebServlet("/Auth")
-public class Auth extends HttpServlet {
+@WebServlet("/Registration")
+public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Auth() {
+    public Registration() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,15 +31,20 @@ public class Auth extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PerAuth p = new PerAuth() ; 
-		p.setNom(request.getParameter("nom"));
-		p.setPrenom(request.getParameter("prenom"));
-		HttpSession HS = request.getSession(true);
-		HS.setAttribute("person", p);
-		RequestDispatcher r = request.getRequestDispatcher("Authentification.jsp");
-		
-		r.forward(request, response);}
-
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		NameBean nameBean = (NameBean)session.getAttribute("nameBean");
+		if (nameBean == null)
+		{
+			String firstName = request.getParameter("firstName");
+			String lastName = request.getParameter("lastName");
+			nameBean = new  NameBean (firstName, lastName);
+			session.setAttribute("nameBean", nameBean);
+		}
+		String address = "vueMVC2-EX2.jsp";	
+		RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+		dispatcher.forward(request, response);
+		}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

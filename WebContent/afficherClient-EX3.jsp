@@ -35,7 +35,7 @@ div {
  <jsp:getProperty name="client" property="email"/>
 </h2>
 </div>
-<h2><i><p style="color:maroon";>Client est crée avec succes </p></i></h2>
+
 <input type="submit" value="Retour">
 </center>
 </body>
